@@ -1,0 +1,280 @@
+
+// Variables
+@dev-debug: 1;
+
+@rows: 6;
+@row-left-margin: -2%;
+@col-margin: (@row-left-margin * -100 ) / ((@row-left-margin * -2) + 100);
+@col-left-right-margin: @col-margin * 2;
+
+@screen-min: 360px;
+@screen-xs-min: 480px;
+@screen-s-min: 768px;
+@screen-m-min: 992px;
+@screen-l-min: 1024px;
+@screen-xl-min: 1200px;
+
+@screen-xs-max: 767;
+@screen-s-max: 991px;
+@screen-m-max: 1023px;
+@screen-l-max: 1199px;
+
+// Mixins > Debug
+.dev-debug(@color: "#f00") when (@dev-debug = 1) {
+    min-height:100px;
+    background:@color none;
+}
+
+// Mixins > Clearfix
+.clearfix() {
+  &:before,
+  &:after {
+    visibility: hidden;
+    display: table;
+    font-size: 0;
+    content: " ";
+    height: 0;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// Mixins > Displays
+.display-hidden() {
+    display: none !important;
+    visibility: hidden !important;
+}
+.display-inherit() {
+    display: inherit !important;
+    visibility: visible !important;
+}
+.display-block() {
+    display: block !important;
+    visibility: visible !important;
+}
+
+// Mixins > Grid
+.make-col(@row-cols, @index, @item) {
+    @{item} {
+        width: (((100% / @row-cols) - @col-left-right-margin) * @index) + (@col-left-right-margin * (@index - 1));
+        .dev-debug(#000);
+    }
+}
+
+.make-rows() {
+    .row(@index) when (@index > 1) and (@index =< @rows) {
+        .make-row(@index);
+        .row(@index + 1);
+    }
+    .row(2);
+}
+
+.make-row(@row-cols) {
+    .col(@index) when (@index = 1) {
+        @item: ~".ASG_row .ASG_col-@{row-cols}-@{index}";
+        .make-col(@row-cols, @index, @item);
+        .col((@index + 1), @item);
+    }
+    .col(@index, @list) when (@index =< @row-cols) {
+        @item: ~".ASG_row .ASG_col-@{row-cols}-@{index}";
+        .make-col(@row-cols, @index, @item);
+        .col((@index + 1), ~"@{list}, @{item}");
+    }
+    .col(@index, @list) when (@index > @row-cols) {
+        @{list} {
+            display: block;
+            float: left;
+            margin: @col-margin;
+        }
+    }
+    .col(1);
+}
+
+.make-col-size(@row-cols, @size, @index, @item) {
+    @{item} {
+        width: (((100% / @row-cols) - @col-left-right-margin) * @index) + (@col-left-right-margin * (@index - 1));
+        .dev-debug(#000);
+    }
+}
+
+.make-rows-size(@size) {
+    .row(@index) when (@index > 1) and (@index =< @rows) {
+        .make-row-size(@index, @size);
+        .row(@index + 1);
+    }
+    .row(2);
+}
+
+.make-row-size(@row-cols, @size) {
+    .col(@index) when (@index = 1) {
+        @item: ~".ASG_row .ASG_col-@{size}-@{row-cols}-@{index}";
+        .make-col-size(@row-cols, @size, @index, @item);
+        .col((@index + 1), @item);
+    }
+    .col(@index, @list) when (@index =< @row-cols) {
+        @item: ~".ASG_row .ASG_col-@{size}-@{row-cols}-@{index}";
+        .make-col-size(@row-cols, @size, @index, @item);
+        .col((@index + 1), ~"@{list}, @{item}");
+    }
+    .col(@index, @list) when (@index > @row-cols) {
+        @{list} {
+            display: block;
+            float: left;
+            margin: @col-margin;
+        }
+    }
+    
+    .col(1);
+}
+
+
+
+/************************
+* CONTAINER
+************************/
+
+.ASG_container,
+.ASG_container-fixed {
+    margin-left: auto;
+    margin-right: auto;
+    .clearfix();
+    .dev-debug(#00f);
+}
+
+.ASG_container-fixed {
+    width:@screen-min;
+    
+    @media (min-width: @screen-xs-min) {
+        width: @screen-xs-min;
+    }
+    @media (min-width: @screen-s-min) {
+        width: @screen-s-min;
+    }
+    @media (min-width: @screen-m-min) {
+        width: @screen-m-min;
+    }
+    @media (min-width: @screen-l-min) {
+        width: @screen-l-min;
+    }
+    @media (min-width: @screen-xl-min) {
+        width: @screen-xl-min;
+    }
+}
+
+/************************
+* ROWS
+************************/
+.ASG_row-container {
+    margin-left:0 !important;
+    margin-right:0 !important;
+}
+.ASG_row {
+    margin: 0 @row-left-margin;
+    .clearfix();
+    .dev-debug(#ff0);
+}
+
+.make-rows();
+
+@media (max-width: @screen-l-max) {
+    .make-rows-size(l);
+}
+
+@media (max-width: @screen-m-max) {
+    .make-rows-size(m);
+}
+
+@media (max-width: @screen-s-max) {
+    .make-rows-size(s);
+}
+
+@media (max-width: @screen-xs-max) {
+    .make-rows-size(xs);
+}
+
+
+
+/************************
+* OVERFLOWS
+************************/
+.ASG_overflow-hidden {
+    overflow: hidden;
+}
+
+/************************
+* DISPLAYS
+************************/
+.hidden {
+    .display-hidden();
+}
+.visible {
+    .display-inherit();
+}
+.block {
+    .display-block();
+}
+
+@media (min-width: @screen-xl-min) {
+    .hidden-xl {
+        .display-hidden();
+    }
+    .visible-xl {
+        .display-inherit();
+    }
+    .block-xl {
+        .display-block();
+    }
+}
+
+@media (max-width: @screen-l-max) {
+    .hidden-l {
+        .display-hidden();
+    }
+    .visible-l {
+        .display-inherit();
+    }
+    .block-l {
+        .display-block();
+    }
+}
+
+@media (max-width: @screen-m-max) {
+    .hidden-m {
+        .display-hidden();
+    }
+    .visible-m {
+        .display-inherit();
+    }
+    .block-m {
+        .display-block();
+    }
+}
+
+@media (max-width: @screen-s-max) {
+    .hidden-s {
+        .display-hidden();
+    }
+    .visible-s {
+        .display-inherit();
+    }
+    .block-s {
+        .display-block();
+    }
+}
+
+@media (max-width: @screen-xs-max) {
+    .hidden-xs {
+        .display-hidden();
+    }
+    .visible-xs {
+        .display-inherit();
+    }
+    .block-xs {
+        .display-block();
+    }
+}
+
+
+
+
