@@ -1,3 +1,4 @@
+/* ASGrid 1.1 | MIT License */
 
 // Variables
 @dev-debug: 1;
@@ -14,10 +15,10 @@
 @screen-l-min: 1024px;
 @screen-xl-min: 1200px;
 
-@screen-xs-max: 767;
-@screen-s-max: 991px;
-@screen-m-max: 1023px;
-@screen-l-max: 1199px;
+@screen-xs-max: (@screen-s-min - 1);
+@screen-s-max: (@screen-m-min - 1);
+@screen-m-max: (@screen-l-min - 1);
+@screen-l-max: (@screen-xl-min - 1);
 
 // Mixins > Debug
 .dev-debug(@color: "#f00") when (@dev-debug = 1) {

@@ -1,3 +1,4 @@
+/* ASGrid 1.1 | MIT License */
 /************************
 * CONTAINER
 ************************/
@@ -415,7 +416,7 @@
     margin: 1.9230769230769231%;
   }
 }
-@media (max-width: 767) {
+@media (max-width: 767px) {
   .ASG_row .ASG_col-xs-2-1 {
     width: 46.15384615384615%;
   }
@@ -579,7 +580,7 @@
     visibility: visible !important;
   }
 }
-@media (max-width: 767) {
+@media (max-width: 767px) {
   .hidden-xs {
     display: none !important;
     visibility: hidden !important;
