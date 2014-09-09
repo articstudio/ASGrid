@@ -73,12 +73,12 @@
 
 .make-row(@row-cols) {
     .col(@index) when (@index = 1) {
-        @item: ~".ASG_row .ASG_col-@{row-cols}-@{index}";
+        @item: ~".ASG_row .ASG_col-@{row-cols}-@{index}, .ASG_row-container .ASG_col-@{row-cols}-@{index}";
         .make-col(@row-cols, @index, @item);
         .col((@index + 1), @item);
     }
     .col(@index, @list) when (@index =< @row-cols) {
-        @item: ~".ASG_row .ASG_col-@{row-cols}-@{index}";
+        @item: ~".ASG_row .ASG_col-@{row-cols}-@{index}, .ASG_row-container .ASG_col-@{row-cols}-@{index}";
         .make-col(@row-cols, @index, @item);
         .col((@index + 1), ~"@{list}, @{item}");
     }
@@ -109,12 +109,12 @@
 
 .make-row-size(@row-cols, @size) {
     .col(@index) when (@index = 1) {
-        @item: ~".ASG_row .ASG_col-@{size}-@{row-cols}-@{index}";
+        @item: ~".ASG_row .ASG_col-@{size}-@{row-cols}-@{index}, .ASG_row-container .ASG_col-@{size}-@{row-cols}-@{index}";
         .make-col-size(@row-cols, @size, @index, @item);
         .col((@index + 1), @item);
     }
     .col(@index, @list) when (@index =< @row-cols) {
-        @item: ~".ASG_row .ASG_col-@{size}-@{row-cols}-@{index}";
+        @item: ~".ASG_row .ASG_col-@{size}-@{row-cols}-@{index}, .ASG_row-container .ASG_col-@{size}-@{row-cols}-@{index}";
         .make-col-size(@row-cols, @size, @index, @item);
         .col((@index + 1), ~"@{list}, @{item}");
     }
