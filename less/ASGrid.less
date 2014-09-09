@@ -1,4 +1,4 @@
-/* ASGrid 1.2 | MIT License */
+/* ASGrid 1.3 | MIT License */
 
 // Variables
 @dev-debug: 1;
@@ -8,6 +8,7 @@
 @col-margin: (@row-left-margin * -100 ) / ((@row-left-margin * -2) + 100);
 @col-left-right-margin: @col-margin * 2;
 
+@screen-gap: 30;
 @screen-min: 360px;
 @screen-xs-min: 480px;
 @screen-s-min: 768px;
@@ -147,19 +148,19 @@
     width:@screen-min;
     
     @media (min-width: @screen-xs-min) {
-        width: @screen-xs-min;
+        width: (@screen-xs-min - @screen-gap);
     }
     @media (min-width: @screen-s-min) {
-        width: @screen-s-min;
+        width: (@screen-s-min - @screen-gap);
     }
     @media (min-width: @screen-m-min) {
-        width: @screen-m-min;
+        width: (@screen-m-min - @screen-gap);
     }
     @media (min-width: @screen-l-min) {
-        width: @screen-l-min;
+        width: (@screen-l-min - @screen-gap);
     }
     @media (min-width: @screen-xl-min) {
-        width: @screen-xl-min;
+        width: (@screen-xl-min - @screen-gap);
     }
 }
 
