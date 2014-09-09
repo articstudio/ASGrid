@@ -1,4 +1,4 @@
-/* ASGrid 1.1 | MIT License */
+/* ASGrid 1.2 | MIT License */
 /************************
 * CONTAINER
 ************************/
@@ -52,14 +52,13 @@
 /************************
 * ROWS
 ************************/
-.ASG_row-container {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-}
+.ASG_row-container,
 .ASG_row {
   margin: 0 -2%;
 }
+.ASG_row-container:before,
 .ASG_row:before,
+.ASG_row-container:after,
 .ASG_row:after {
   visibility: hidden;
   display: table;
@@ -67,8 +66,13 @@
   content: " ";
   height: 0;
 }
+.ASG_row-container:after,
 .ASG_row:after {
   clear: both;
+}
+.ASG_row-container {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 .ASG_row .ASG_col-2-1 {
   width: 46.15384615384615%;

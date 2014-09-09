@@ -1,4 +1,4 @@
-/* ASGrid 1.1 | MIT License */
+/* ASGrid 1.2 | MIT License */
 
 // Variables
 @dev-debug: 1;
@@ -166,14 +166,15 @@
 /************************
 * ROWS
 ************************/
-.ASG_row-container {
-    margin-left:0 !important;
-    margin-right:0 !important;
-}
+.ASG_row-container,
 .ASG_row {
     margin: 0 @row-left-margin;
     .clearfix();
     .dev-debug(#ff0);
+}
+.ASG_row-container {
+    margin-left:0 !important;
+    margin-right:0 !important;
 }
 
 .make-rows();
