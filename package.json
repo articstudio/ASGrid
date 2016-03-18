@@ -1,0 +1,27 @@
+{
+  "name": "ASGrid",
+  "version": "1.4.0",
+  "description": "Artic Studio CSS grid",
+  "main": "build/ASGrid.min.css",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-clean-css": "^2.0.3",
+    "gulp-less": "^3.0.3",
+    "gulp-rename": "^1.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/articstudio/ASGrid.git"
+  },
+  "keywords": [
+    "css",
+    "grid"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/articstudio/ASGrid/issues"
+  },
+  "homepage": "https://github.com/articstudio/ASGrid",
+  "author": "Marc Mascort Bou"
+}

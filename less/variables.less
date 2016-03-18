@@ -1,0 +1,20 @@
+// Grid
+@rows: 24;
+@row-left-margin: 0;
+@col-margin: (@row-left-margin * -100 ) / ((@row-left-margin * -2) + 100);
+@col-left-right-margin: @col-margin * 2;
+
+// Screen
+@screen-gap: 20px;
+
+@screen-xs-min: 480px;
+@screen-s-min: 768px;
+@screen-m-min: 992px;
+@screen-l-min: 1024px;
+@screen-xl-min: 1366px;
+
+@screen-xxs-max: (@screen-xs-min - 1);
+@screen-xs-max: (@screen-s-min - 1);
+@screen-s-max: (@screen-m-min - 1);
+@screen-m-max: (@screen-l-min - 1);
+@screen-l-max: (@screen-xl-min - 1);

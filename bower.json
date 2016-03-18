@@ -1,0 +1,21 @@
+{
+  "name": "ASGrid",
+  "description": "Artic Studio CSS grid",
+  "main": "build/ASGrid.min.css",
+  "dependencies": {},
+  "devDependencies": {},
+  "ignore": [
+    "**/.*",
+    "package.json",
+    "node_modules"
+  ],
+  "homepage": "https://github.com/articstudio/ASGrid",
+  "authors": [
+    "Marc Mascort Bou"
+  ],
+  "keywords": [
+    "css",
+    "grid"
+  ],
+  "license": "MIT"
+}
