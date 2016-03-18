@@ -1,6 +1,6 @@
 {
-  "name": "ASGrid",
-  "version": "1.4.0",
+  "name": "asgrid",
+  "version": "1.5.1",
   "description": "Artic Studio CSS grid",
   "main": "build/ASGrid.min.css",
   "dependencies": {},
