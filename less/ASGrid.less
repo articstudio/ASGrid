@@ -387,8 +387,7 @@ body {
 
 /* CONTAINER */
 
-.container,
-.container-fixed {
+.container {
   margin-left: auto;
   margin-right: auto;
   padding-left:@screen-gap !important;
@@ -397,7 +396,7 @@ body {
   .clearfix();
 }
 
-.container-fixed {
+.container {
   /*width:@screen-min;*/
   /*@media (max-width: @screen-xs-max) {
       width: auto;
@@ -429,7 +428,7 @@ body {
 /* ROWS */
 .row-container,
 .row {
-  margin: 0 @row-left-margin;
+  margin: 0 @row-margin;
   .clearfix();
 }
 .row-container {
