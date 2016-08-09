@@ -1,0 +1,20 @@
+// Variables
+@import "../variables/breakpoints";
+@import "../variables/config";
+
+// Mixins
+@import "../mixins/breakpoints";
+@import "../mixins/position";
+
+@if map-get($asgrid-use, position) {
+  /* POSITION */
+  $makes: (
+    absolute: absolute,
+    fixed: fixed,
+    relative: relative,
+    static: static,
+    inherit: inherit
+  );
+  @include make-position($makes);
+  @include make-position-responsive($makes, $breakpoints);
+}

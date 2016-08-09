@@ -1,0 +1,68 @@
+@mixin display-hidden() {
+  display: none !important;
+  visibility: hidden !important;
+}
+@mixin display-inherit() {
+  display: inherit !important;
+  visibility: visible !important;
+}
+@mixin display-block() {
+  display: block !important;
+  visibility: visible !important;
+}
+@mixin display-inline-block() {
+  display: inline-block !important;
+  visibility: visible !important;
+}
+@mixin display-inline() {
+  display: inline !important;
+  visibility: visible !important;
+}
+@mixin display($type) {
+  @if $type == hidden {
+    @include display-hidden;
+  } @else if $type == block {
+    @include display-block;
+  } @else if $type == inline-block {
+    @include display-inline-block;
+  } @else if $type == inline {
+    @include display-inline;
+  } @else {
+    @include display-inherit;
+  }
+}
+@mixin make-display($makes, $suffix: false) {
+  @each $selector, $type in $makes {
+    $name: if($suffix, #{$selector}-#{$suffix}, #{$selector});
+    .display-#{$name} {
+      @include display($type);
+    }
+  }
+}
+@mixin make-display-responsive($makes, $bps: $breakpoints) {
+  @each $bp-name in map-keys($bps) {
+    $prev: breakpoint-prev($bp-name, $bps);
+    $next: breakpoint-next($bp-name, $bps);
+    @if $prev == null {
+      @include media-breakpoint-down($bp-name, $bps) {
+        @include make-display($makes, $bp-name);
+      }
+    } @else if ($next == null) {
+      @include media-breakpoint-up($bp-name, $bps) {
+        @include make-display($makes, $bp-name);
+      }
+    } @else {
+      @include media-breakpoint-between($bp-name, $next, $bps) {
+        @include make-display($makes, $bp-name);
+      }
+      $bp-name-down: #{$bp-name}-down;
+      @include media-breakpoint-down($bp-name, $bps) {
+        @include make-display($makes, $bp-name-down);
+      }
+      $bp-name-up: #{$bp-name}-up;
+      @include media-breakpoint-up($bp-name, $bps) {
+        @include make-display($makes, $bp-name-up);
+      }
+    }
+  }
+}

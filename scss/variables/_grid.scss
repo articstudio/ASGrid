@@ -1,0 +1,7 @@
+$screen-gap: 20px;
+
+$row-margin: 0; // Must be negative x<=0
+$col-margin: ($row-margin * -100 ) / (($row-margin * -2) + 100);
+$col-left-right-margin: $col-margin * 2;
+
+$columns: (2, 3, 5, 6, 12, 24);

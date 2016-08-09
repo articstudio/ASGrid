@@ -1,0 +1,48 @@
+// Variables
+@import "../variables/breakpoints";
+@import "../variables/grid";
+
+// Mixins
+@import "../mixins/breakpoints";
+@import "../mixins/clear";
+@import "../mixins/grid";
+
+/* CONTAINER */
+
+.container, .container-fluid {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left:$screen-gap !important;
+  padding-right:$screen-gap !important;
+  box-sizing: border-box;
+  @include clearfix;
+}
+@include make-container-responsive($breakpoints);
+
+/* ROW */
+.row, .row-container {
+  margin: 0 $row-margin;
+  @include clearfix;
+}
+.row-container {
+  margin-left:0 !important;
+  margin-right:0 !important;
+}
+
+/* COLUMNS */
+
+%column {
+  @include column;
+}
+%column-full {
+  @include width-full;
+}
+
+.row, .row-container {
+  .col-full {
+    @extend %column;
+    @extend %column-full;
+  }
+  @include make-columns($columns);
+  @include make-columns-responsive($columns, $breakpoints);
+}

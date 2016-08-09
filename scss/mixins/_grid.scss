@@ -1,0 +1,100 @@
+@mixin width-auto {
+  width:auto !important;
+}
+@mixin width-full {
+  width:100% !important;
+}
+
+@mixin column {
+  display: block;
+  float: left;
+  margin: $col-margin;
+  box-sizing: border-box;
+  width:auto;
+}
+
+@mixin make-container-responsive($bps: $breakpoints) {
+  @each $bp-name in map-keys($bps) {
+    $prev: breakpoint-prev($bp-name, $bps);
+    $next: breakpoint-next($bp-name, $bps);
+    @if $prev == null {
+      @include media-breakpoint-down($bp-name, $bps) {
+        .container, .container-fluid, .container-fluid-#{$bp-name} {
+          width:auto !important;
+        }
+      }
+    } @else if ($next == null) {
+      @include media-breakpoint-up($bp-name, $bps) {
+        $width: breakpoint-min($bp-name, $bps) - $screen-gap - $screen-gap;
+        .container {
+          width:$width;
+        }
+        .container-fluid, .container-fluid-#{$bp-name} {
+          @include width-auto;
+        }
+      }
+    } @else {
+      @include media-breakpoint-between($bp-name, $next, $bps) {
+        .container-fluid-#{$bp-name} {
+          @include width-auto;
+        }
+      }
+      @include media-breakpoint-down($bp-name, $bps) {
+        .container-fluid, .container-fluid-#{$bp-name}-down {
+          @include width-auto;
+        }
+      }
+      @include media-breakpoint-up($bp-name, $bps) {
+        $width: breakpoint-min($bp-name, $bps) - $screen-gap - $screen-gap;
+        .container {
+          width:$width;
+        }
+        .container-fluid, .container-fluid-#{$bp-name}-up {
+          @include width-auto;
+        }
+      }
+    }
+  }
+}
+
+@mixin make-columns($cols: $columns, $prefix: null) {
+  @each $col-size in $cols {
+    $col-max: $col-size - 1;
+    @for $i from 1 through $col-max {
+      $name: if($prefix, col-#{$prefix}-#{$col-size}-#{$i}, col-#{$col-size}-#{$i});
+      .#{$name} {
+        width: (((100% / $col-size) - $col-left-right-margin) * $i) + ($col-left-right-margin * ($i - 1))  !important;
+        @if $prefix == null  { @extend %column; }
+      }
+      $name: if($prefix, offset-#{$prefix}-#{$col-size}-#{$i}, offset-#{$col-size}-#{$i});
+      .#{$name} {
+        margin-left: (((100% / $col-size) - $col-left-right-margin) * $i) + ($col-left-right-margin * ($i + 0.5)) !important;
+      }
+    }
+    $name: if($prefix, col-#{$prefix}-#{$col-size}-#{$col-size}, col-#{$col-size}-#{$col-size});
+    $name-full: if($prefix, col-#{$prefix}-full, col-full);
+    .#{$name}, .#{$name-full} {
+      @if $prefix { @include width-full; } @else { @extend %column; @extend %column-full; }
+    }
+  }
+}
+
+@mixin make-columns-responsive($cols: $columns, $bps: $breakpoints) {
+  @each $bp-name in map-keys($bps) {
+    $prev: breakpoint-prev($bp-name, $bps);
+    $next: breakpoint-next($bp-name, $bps);
+    @if $prev == null {
+      @include media-breakpoint-down($bp-name, $bps) {
+        @include make-columns($cols, $bp-name);
+      }
+    } @else if ($next == null) {
+      @include media-breakpoint-up($bp-name, $bps) {
+        @include make-columns($cols, $bp-name);
+      }
+    } @else {
+      @include media-breakpoint-down($bp-name, $bps) {
+        @include make-columns($cols, $bp-name);
+      }
+    }
+  }
+}

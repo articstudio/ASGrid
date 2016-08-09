@@ -1,0 +1,20 @@
+// Variables
+@import "../variables/breakpoints";
+@import "../variables/config";
+
+// Mixins
+@import "../mixins/breakpoints";
+@import "../mixins/overflow";
+
+@if map-get($asgrid-use, overflow) {
+  /* OVERFLOW */
+  $makes: (
+    hidden: hidden,
+    visible: visible,
+    scroll: scroll,
+    auto: auto,
+    inherit: inherit
+  );
+  @include make-overflow($makes);
+  @include make-overflow-responsive($makes, $breakpoints);
+}

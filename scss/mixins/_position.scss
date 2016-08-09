@@ -1,0 +1,63 @@
+@mixin position-absolute() {
+  position:absolute !important;
+}
+@mixin position-fixed() {
+  position:fixed !important;
+}
+@mixin position-relative() {
+  position:relative !important;
+}
+@mixin position-static() {
+  position:static !important;
+}
+@mixin position-inherit() {
+  position:inherit !important;
+}
+@mixin position($type) {
+  @if $type == absolute {
+    @include position-absolute;
+  } @else if $type == fixed {
+    @include position-fixed;
+  } @else if $type == relative {
+    @include position-relative;
+  } @else if $type == static {
+    @include position-static;
+  } @else {
+    @include position-inherit;
+  }
+}
+@mixin make-position($makes, $suffix: false) {
+  @each $selector, $type in $makes {
+    $name: if($suffix, #{$selector}-#{$suffix}, #{$selector});
+    .position-#{$name} {
+      @include position($type);
+    }
+  }
+}
+@mixin make-position-responsive($makes, $bps: $breakpoints) {
+  @each $bp-name in map-keys($bps) {
+    $prev: breakpoint-prev($bp-name, $bps);
+    $next: breakpoint-next($bp-name, $bps);
+    @if $prev == null {
+      @include media-breakpoint-down($bp-name, $bps) {
+        @include make-position($makes, $bp-name);
+      }
+    } @else if ($next == null) {
+      @include media-breakpoint-up($bp-name, $bps) {
+        @include make-position($makes, $bp-name);
+      }
+    } @else {
+      @include media-breakpoint-between($bp-name, $next, $bps) {
+        @include make-position($makes, $bp-name);
+      }
+      $bp-name-down: #{$bp-name}-down;
+      @include media-breakpoint-down($bp-name, $bps) {
+        @include make-position($makes, $bp-name-down);
+      }
+      $bp-name-up: #{$bp-name}-up;
+      @include media-breakpoint-up($bp-name, $bps) {
+        @include make-position($makes, $bp-name-up);
+      }
+    }
+  }
+}

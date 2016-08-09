@@ -1,0 +1,10 @@
+// Variables
+@import "../variables/config";
+
+@if map-get($asgrid-use, reset) {
+  /* RESET */
+  body {
+    padding:0;
+    margin:0;
+  }
+}

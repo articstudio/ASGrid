@@ -1,7 +1,7 @@
 {
   "name": "asgrid",
   "description": "Artic Studio CSS grid",
-  "main": "build/ASGrid.min.css",
+  "main": "dist/ASGrid.min.css",
   "dependencies": {},
   "devDependencies": {},
   "ignore": [
@@ -11,7 +11,7 @@
   ],
   "homepage": "https://github.com/articstudio/ASGrid",
   "authors": [
-    "Marc Mascort Bou"
+    "Artic studio"
   ],
   "keywords": [
     "css",

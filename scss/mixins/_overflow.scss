@@ -1,0 +1,105 @@
+@mixin overflow-x($type: auto) {
+  overflow-x: $type;
+}
+@mixin overflow-y($type: auto) {
+  overflow-y: $type;
+}
+@mixin overflow-xy($type-x: auto, $type-y: auto) {
+  @include overflow-x($type-x);
+  @include overflow-y($type-y);
+}
+
+@mixin overflow-xy-visible() {
+  @include overflow-xy(visible, visible);
+}
+@mixin overflow-x-visible() {
+  @include overflow-x(visible);
+}
+@mixin overflow-y-visible() {
+  @include overflow-y(visible);
+}
+@mixin overflow-xy-hidden() {
+  @include overflow-xy(hidden, hidden);
+}
+@mixin overflow-x-hidden() {
+  @include overflow-x(hidden);
+}
+@mixin overflow-y-hidden() {
+  @include overflow-y(hidden);
+}
+@mixin overflow-xy-scroll() {
+  @include overflow-xy(scroll, scroll);
+}
+@mixin overflow-x-scroll() {
+  @include overflow-x(scroll);
+}
+@mixin overflow-y-scroll() {
+  @include overflow-y(scroll);
+}
+@mixin overflow-xy-auto() {
+  @include overflow-xy(auto, auto);
+}
+@mixin overflow-x-auto() {
+  @include overflow-x(auto);
+}
+@mixin overflow-y-auto() {
+  @include overflow-y(auto);
+}
+@mixin overflow-xy-inherit() {
+  @include overflow-xy(inherit, inherit);
+}
+@mixin overflow-x-inherit() {
+  @include overflow-x(inherit);
+}
+@mixin overflow-y-inherit() {
+  @include overflow-y(inherit);
+}
+
+@mixin overflow($type) {
+  @if $type == hidden {
+    @include overflow-xy-hidden;
+  } @else if $type == visible {
+    @include overflow-xy-visible;
+  } @else if $type == scroll {
+    @include overflow-xy-scroll;
+  } @else if $type == auto {
+    @include overflow-xy-auto;
+  } @else {
+    @include overflow-xy-inherit;
+  }
+}
+@mixin make-overflow($makes, $suffix: false) {
+  @each $selector, $type in $makes {
+    $name: if($suffix, #{$selector}-#{$suffix}, #{$selector});
+    .overflow-#{$name} {
+      @include overflow($type);
+    }
+  }
+}
+@mixin make-overflow-responsive($makes, $bps: $breakpoints) {
+  @each $bp-name in map-keys($bps) {
+    $prev: breakpoint-prev($bp-name, $bps);
+    $next: breakpoint-next($bp-name, $bps);
+    @if $prev == null {
+      @include media-breakpoint-down($bp-name, $bps) {
+        @include make-overflow($makes, $bp-name);
+      }
+    } @else if ($next == null) {
+      @include media-breakpoint-up($bp-name, $bps) {
+        @include make-overflow($makes, $bp-name);
+      }
+    } @else {
+      @include media-breakpoint-between($bp-name, $next, $bps) {
+        @include make-overflow($makes, $bp-name);
+      }
+      $bp-name-down: #{$bp-name}-down;
+      @include media-breakpoint-down($bp-name, $bps) {
+        @include make-overflow($makes, $bp-name-down);
+      }
+      $bp-name-up: #{$bp-name}-up;
+      @include media-breakpoint-up($bp-name, $bps) {
+        @include make-overflow($makes, $bp-name-up);
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+// Variables
+@import "../variables/breakpoints";
+@import "../variables/config";
+
+// Mixins
+@import "../mixins/breakpoints";
+@import "../mixins/display";
+
+@if map-get($asgrid-use, display) {
+  /* DISPLAY */
+  $makes: (
+    hidden: hidden,
+    block: block,
+    inline-block: inline-block,
+    inline: inline,
+    visible: inherit,
+    inherit: inherit
+  );
+  @include make-display($makes);
+  @include make-display-responsive($makes, $breakpoints);
+}

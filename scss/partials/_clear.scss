@@ -1,0 +1,12 @@
+// Variables
+@import "../variables/config";
+
+// Mixins
+@import "../mixins/clear";
+
+@if map-get($asgrid-use, clear) {
+  /* CLEAR */
+  .clearfix {
+    @include clearfix();
+  }
+}
