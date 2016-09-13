@@ -1,0 +1,18 @@
+// Variables
+@import "../variables/breakpoints";
+@import "../variables/config";
+
+// Mixins
+@import "../mixins/breakpoints";
+@import "../mixins/text";
+
+@if map-get($asgrid-use, text) {
+  /* FLOAT */
+  $makes: (
+    left: left,
+    right: right,
+    center: center
+  );
+  @include make-text($makes);
+  @include make-text-responsive($makes, $breakpoints);
+}

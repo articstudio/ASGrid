@@ -34,7 +34,7 @@
         }
       }
     } @else {
-      @include media-breakpoint-between($bp-name, $next, $bps) {
+      @include media-breakpoint-between($bp-name, $bp-name, $bps) {
         .container-fluid-#{$bp-name} {
           @include width-auto;
         }
@@ -59,12 +59,19 @@
 
 @mixin make-columns($cols: $columns, $prefix: null) {
   @each $col-size in $cols {
+    $name: if($prefix, offset-#{$prefix}-0, offset-#{$col-size}-0);
+    .#{$name} {
+      margin-left: 0 !important;
+    }
     $col-max: $col-size - 1;
     @for $i from 1 through $col-max {
       $name: if($prefix, col-#{$prefix}-#{$col-size}-#{$i}, col-#{$col-size}-#{$i});
       .#{$name} {
         width: (((100% / $col-size) - $col-left-right-margin) * $i) + ($col-left-right-margin * ($i - 1))  !important;
         @if $prefix == null  { @extend %column; }
+        &.col-m-b {
+          margin-bottom: (((100% / $col-size) - $col-left-right-margin))  !important;
+        }
       }
       $name: if($prefix, offset-#{$prefix}-#{$col-size}-#{$i}, offset-#{$col-size}-#{$i});
       .#{$name} {
@@ -75,6 +82,11 @@
     $name-full: if($prefix, col-#{$prefix}-full, col-full);
     .#{$name}, .#{$name-full} {
       @if $prefix { @include width-full; } @else { @extend %column; @extend %column-full; }
+    }
+    .#{$name} {
+      &.col-m-b {
+        margin-bottom: (((100% / $col-size) - $col-left-right-margin))  !important;
+      }
     }
   }
 }
@@ -92,8 +104,16 @@
         @include make-columns($cols, $bp-name);
       }
     } @else {
-      @include media-breakpoint-down($bp-name, $bps) {
+      @include media-breakpoint-between($bp-name, $bp-name, $bps) {
         @include make-columns($cols, $bp-name);
+      }
+      $bp-name-down: #{$bp-name}-down;
+      @include media-breakpoint-down($bp-name, $bps) {
+        @include make-columns($cols, $bp-name-down);
+      }
+      $bp-name-up: #{$bp-name}-up;
+      @include media-breakpoint-up($bp-name, $bps) {
+        @include make-columns($cols, $bp-name-up);
       }
     }
   }

@@ -52,7 +52,7 @@
         @include make-display($makes, $bp-name);
       }
     } @else {
-      @include media-breakpoint-between($bp-name, $next, $bps) {
+      @include media-breakpoint-between($bp-name, $bp-name, $bps) {
         @include make-display($makes, $bp-name);
       }
       $bp-name-down: #{$bp-name}-down;
