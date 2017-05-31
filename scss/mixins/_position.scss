@@ -47,7 +47,7 @@
         @include make-position($makes, $bp-name);
       }
     } @else {
-      @include media-breakpoint-between($bp-name, $next, $bps) {
+      @include media-breakpoint-between($bp-name, $bp-name, $bps) {
         @include make-position($makes, $bp-name);
       }
       $bp-name-down: #{$bp-name}-down;
