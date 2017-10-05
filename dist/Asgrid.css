@@ -1,4 +1,9 @@
 /* ASGrid 2.1 | MIT License */
+/* RESET */
+body {
+  padding: 0;
+  margin: 0; }
+
 /* CLEAR */
 .clearfix:after {
   visibility: hidden;
@@ -496,6 +501,387 @@
     position: static !important; }
   .position-inherit-xl {
     position: inherit !important; } }
+
+/* OVERFLOW */
+.overflow-hidden {
+  overflow-x: hidden;
+  overflow-y: hidden; }
+
+.overflow-visible {
+  overflow-x: visible;
+  overflow-y: visible; }
+
+.overflow-scroll {
+  overflow-x: scroll;
+  overflow-y: scroll; }
+
+.overflow-auto {
+  overflow-x: auto;
+  overflow-y: auto; }
+
+.overflow-inherit {
+  overflow-x: inherit;
+  overflow-y: inherit; }
+
+@media (max-width: 479px) {
+  .overflow-hidden-xxs {
+    overflow-x: hidden;
+    overflow-y: hidden; }
+  .overflow-visible-xxs {
+    overflow-x: visible;
+    overflow-y: visible; }
+  .overflow-scroll-xxs {
+    overflow-x: scroll;
+    overflow-y: scroll; }
+  .overflow-auto-xxs {
+    overflow-x: auto;
+    overflow-y: auto; }
+  .overflow-inherit-xxs {
+    overflow-x: inherit;
+    overflow-y: inherit; } }
+
+@media (min-width: 480px) and (max-width: 767px) {
+  .overflow-hidden-xs {
+    overflow-x: hidden;
+    overflow-y: hidden; }
+  .overflow-visible-xs {
+    overflow-x: visible;
+    overflow-y: visible; }
+  .overflow-scroll-xs {
+    overflow-x: scroll;
+    overflow-y: scroll; }
+  .overflow-auto-xs {
+    overflow-x: auto;
+    overflow-y: auto; }
+  .overflow-inherit-xs {
+    overflow-x: inherit;
+    overflow-y: inherit; } }
+
+@media (max-width: 767px) {
+  .overflow-hidden-xs-down {
+    overflow-x: hidden;
+    overflow-y: hidden; }
+  .overflow-visible-xs-down {
+    overflow-x: visible;
+    overflow-y: visible; }
+  .overflow-scroll-xs-down {
+    overflow-x: scroll;
+    overflow-y: scroll; }
+  .overflow-auto-xs-down {
+    overflow-x: auto;
+    overflow-y: auto; }
+  .overflow-inherit-xs-down {
+    overflow-x: inherit;
+    overflow-y: inherit; } }
+
+@media (min-width: 480px) {
+  .overflow-hidden-xs-up {
+    overflow-x: hidden;
+    overflow-y: hidden; }
+  .overflow-visible-xs-up {
+    overflow-x: visible;
+    overflow-y: visible; }
+  .overflow-scroll-xs-up {
+    overflow-x: scroll;
+    overflow-y: scroll; }
+  .overflow-auto-xs-up {
+    overflow-x: auto;
+    overflow-y: auto; }
+  .overflow-inherit-xs-up {
+    overflow-x: inherit;
+    overflow-y: inherit; } }
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .overflow-hidden-s {
+    overflow-x: hidden;
+    overflow-y: hidden; }
+  .overflow-visible-s {
+    overflow-x: visible;
+    overflow-y: visible; }
+  .overflow-scroll-s {
+    overflow-x: scroll;
+    overflow-y: scroll; }
+  .overflow-auto-s {
+    overflow-x: auto;
+    overflow-y: auto; }
+  .overflow-inherit-s {
+    overflow-x: inherit;
+    overflow-y: inherit; } }
+
+@media (max-width: 991px) {
+  .overflow-hidden-s-down {
+    overflow-x: hidden;
+    overflow-y: hidden; }
+  .overflow-visible-s-down {
+    overflow-x: visible;
+    overflow-y: visible; }
+  .overflow-scroll-s-down {
+    overflow-x: scroll;
+    overflow-y: scroll; }
+  .overflow-auto-s-down {
+    overflow-x: auto;
+    overflow-y: auto; }
+  .overflow-inherit-s-down {
+    overflow-x: inherit;
+    overflow-y: inherit; } }
+
+@media (min-width: 768px) {
+  .overflow-hidden-s-up {
+    overflow-x: hidden;
+    overflow-y: hidden; }
+  .overflow-visible-s-up {
+    overflow-x: visible;
+    overflow-y: visible; }
+  .overflow-scroll-s-up {
+    overflow-x: scroll;
+    overflow-y: scroll; }
+  .overflow-auto-s-up {
+    overflow-x: auto;
+    overflow-y: auto; }
+  .overflow-inherit-s-up {
+    overflow-x: inherit;
+    overflow-y: inherit; } }
+
+@media (min-width: 992px) and (max-width: 1023px) {
+  .overflow-hidden-m {
+    overflow-x: hidden;
+    overflow-y: hidden; }
+  .overflow-visible-m {
+    overflow-x: visible;
+    overflow-y: visible; }
+  .overflow-scroll-m {
+    overflow-x: scroll;
+    overflow-y: scroll; }
+  .overflow-auto-m {
+    overflow-x: auto;
+    overflow-y: auto; }
+  .overflow-inherit-m {
+    overflow-x: inherit;
+    overflow-y: inherit; } }
+
+@media (max-width: 1023px) {
+  .overflow-hidden-m-down {
+    overflow-x: hidden;
+    overflow-y: hidden; }
+  .overflow-visible-m-down {
+    overflow-x: visible;
+    overflow-y: visible; }
+  .overflow-scroll-m-down {
+    overflow-x: scroll;
+    overflow-y: scroll; }
+  .overflow-auto-m-down {
+    overflow-x: auto;
+    overflow-y: auto; }
+  .overflow-inherit-m-down {
+    overflow-x: inherit;
+    overflow-y: inherit; } }
+
+@media (min-width: 992px) {
+  .overflow-hidden-m-up {
+    overflow-x: hidden;
+    overflow-y: hidden; }
+  .overflow-visible-m-up {
+    overflow-x: visible;
+    overflow-y: visible; }
+  .overflow-scroll-m-up {
+    overflow-x: scroll;
+    overflow-y: scroll; }
+  .overflow-auto-m-up {
+    overflow-x: auto;
+    overflow-y: auto; }
+  .overflow-inherit-m-up {
+    overflow-x: inherit;
+    overflow-y: inherit; } }
+
+@media (min-width: 1024px) and (max-width: 1365px) {
+  .overflow-hidden-l {
+    overflow-x: hidden;
+    overflow-y: hidden; }
+  .overflow-visible-l {
+    overflow-x: visible;
+    overflow-y: visible; }
+  .overflow-scroll-l {
+    overflow-x: scroll;
+    overflow-y: scroll; }
+  .overflow-auto-l {
+    overflow-x: auto;
+    overflow-y: auto; }
+  .overflow-inherit-l {
+    overflow-x: inherit;
+    overflow-y: inherit; } }
+
+@media (max-width: 1365px) {
+  .overflow-hidden-l-down {
+    overflow-x: hidden;
+    overflow-y: hidden; }
+  .overflow-visible-l-down {
+    overflow-x: visible;
+    overflow-y: visible; }
+  .overflow-scroll-l-down {
+    overflow-x: scroll;
+    overflow-y: scroll; }
+  .overflow-auto-l-down {
+    overflow-x: auto;
+    overflow-y: auto; }
+  .overflow-inherit-l-down {
+    overflow-x: inherit;
+    overflow-y: inherit; } }
+
+@media (min-width: 1024px) {
+  .overflow-hidden-l-up {
+    overflow-x: hidden;
+    overflow-y: hidden; }
+  .overflow-visible-l-up {
+    overflow-x: visible;
+    overflow-y: visible; }
+  .overflow-scroll-l-up {
+    overflow-x: scroll;
+    overflow-y: scroll; }
+  .overflow-auto-l-up {
+    overflow-x: auto;
+    overflow-y: auto; }
+  .overflow-inherit-l-up {
+    overflow-x: inherit;
+    overflow-y: inherit; } }
+
+@media (min-width: 1366px) {
+  .overflow-hidden-xl {
+    overflow-x: hidden;
+    overflow-y: hidden; }
+  .overflow-visible-xl {
+    overflow-x: visible;
+    overflow-y: visible; }
+  .overflow-scroll-xl {
+    overflow-x: scroll;
+    overflow-y: scroll; }
+  .overflow-auto-xl {
+    overflow-x: auto;
+    overflow-y: auto; }
+  .overflow-inherit-xl {
+    overflow-x: inherit;
+    overflow-y: inherit; } }
+
+/* FLOAT */
+.text-left {
+  text-align: left !important; }
+
+.text-right {
+  text-align: right !important; }
+
+.text-center {
+  text-align: center !important; }
+
+@media (max-width: 479px) {
+  .text-left-xxs {
+    text-align: left !important; }
+  .text-right-xxs {
+    text-align: right !important; }
+  .text-center-xxs {
+    text-align: center !important; } }
+
+@media (min-width: 480px) and (max-width: 767px) {
+  .text-left-xs {
+    text-align: left !important; }
+  .text-right-xs {
+    text-align: right !important; }
+  .text-center-xs {
+    text-align: center !important; } }
+
+@media (max-width: 767px) {
+  .text-left-xs-down {
+    text-align: left !important; }
+  .text-right-xs-down {
+    text-align: right !important; }
+  .text-center-xs-down {
+    text-align: center !important; } }
+
+@media (min-width: 480px) {
+  .text-left-xs-up {
+    text-align: left !important; }
+  .text-right-xs-up {
+    text-align: right !important; }
+  .text-center-xs-up {
+    text-align: center !important; } }
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .text-left-s {
+    text-align: left !important; }
+  .text-right-s {
+    text-align: right !important; }
+  .text-center-s {
+    text-align: center !important; } }
+
+@media (max-width: 991px) {
+  .text-left-s-down {
+    text-align: left !important; }
+  .text-right-s-down {
+    text-align: right !important; }
+  .text-center-s-down {
+    text-align: center !important; } }
+
+@media (min-width: 768px) {
+  .text-left-s-up {
+    text-align: left !important; }
+  .text-right-s-up {
+    text-align: right !important; }
+  .text-center-s-up {
+    text-align: center !important; } }
+
+@media (min-width: 992px) and (max-width: 1023px) {
+  .text-left-m {
+    text-align: left !important; }
+  .text-right-m {
+    text-align: right !important; }
+  .text-center-m {
+    text-align: center !important; } }
+
+@media (max-width: 1023px) {
+  .text-left-m-down {
+    text-align: left !important; }
+  .text-right-m-down {
+    text-align: right !important; }
+  .text-center-m-down {
+    text-align: center !important; } }
+
+@media (min-width: 992px) {
+  .text-left-m-up {
+    text-align: left !important; }
+  .text-right-m-up {
+    text-align: right !important; }
+  .text-center-m-up {
+    text-align: center !important; } }
+
+@media (min-width: 1024px) and (max-width: 1365px) {
+  .text-left-l {
+    text-align: left !important; }
+  .text-right-l {
+    text-align: right !important; }
+  .text-center-l {
+    text-align: center !important; } }
+
+@media (max-width: 1365px) {
+  .text-left-l-down {
+    text-align: left !important; }
+  .text-right-l-down {
+    text-align: right !important; }
+  .text-center-l-down {
+    text-align: center !important; } }
+
+@media (min-width: 1024px) {
+  .text-left-l-up {
+    text-align: left !important; }
+  .text-right-l-up {
+    text-align: right !important; }
+  .text-center-l-up {
+    text-align: center !important; } }
+
+@media (min-width: 1366px) {
+  .text-left-xl {
+    text-align: left !important; }
+  .text-right-xl {
+    text-align: right !important; }
+  .text-center-xl {
+    text-align: center !important; } }
 
 /* FLOAT */
 .float-left {
